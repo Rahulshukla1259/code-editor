@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AceEditor from 'react-ace';
 import Terminal from './Terminal';
 
-// Import the Ace Editor modes and themes you want to use
+
 
 function Ace(props) {
   var [code, setCode] = useState(''); 
@@ -15,14 +15,14 @@ function Ace(props) {
 
   const [result,setresult]=useState("")
  
-
+ //saving the code 
   let save = function (){
 
     localStorage.setItem("code",code===""?localStorage.getItem("code"):code)
 
     setsaveText("Saved")
   }
-
+  // copying the code 
   let copy = function(){
 
     navigator.clipboard.writeText(code===""?localStorage.getItem("code"):code)
@@ -30,7 +30,7 @@ function Ace(props) {
     setctext("Copied!")
 
   }
-
+ //handling mouse leave event
   let handleLeave = function (){
 
        setsaveText("Save")
@@ -39,6 +39,8 @@ function Ace(props) {
   }
 
    let resultArr=[];
+
+  //evaluating js code to show result in terminal
   let evaluate = function(){
      try{
      
